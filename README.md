@@ -69,6 +69,14 @@ Complete layout on two joined 400-point breadboards, with the pump driver and it
 
 ![Breadboard layout](docs/images/wiring-breadboard.png)
 
+Physical arrangement: the pump sits in a water container, the hose runs along the growing medium, and the electronics stay away from the water.
+
+![System layout](docs/images/system-layout.png)
+
+Photo of an assembled sensor stage (soil sensor in the growing medium, controller on a breadboard). This photo is from an earlier run of the practicum, which used a different board and soil sensor type; the arrangement is the same.
+
+![Assembled system](docs/images/system-photo.jpg)
+
 Serial output of the running device (sensor line every second, an incoming ping command and its reply):
 
 ![Serial monitor](docs/images/serial-monitor.png)
@@ -168,7 +176,7 @@ Pump switch and device replies on the dashboard (here the answer to a ping):
 
 ## Image credits
 
-The wiring and architecture drawings are my own, but they embed product photos and icons that belong to their respective owners: the ESP32 DevKit, capacitive soil moisture sensor, L298N driver, pump and adaptor photos come from vendor listings and earlier course slides, and the DHT11 top-view photo is by Edwiyanto (Wikimedia Commons, CC BY-SA 4.0). All screenshots were taken from my own running system.
+The wiring and architecture drawings are my own, but they embed product photos and icons that belong to their respective owners: the ESP32 DevKit, capacitive soil moisture sensor, L298N driver, pump and adaptor photos come from vendor listings and earlier course slides, and the DHT11 top-view photo is by Edwiyanto (Wikimedia Commons, CC BY-SA 4.0). The photo of the assembled system comes from earlier course material. All screenshots were taken from my own running system.
 
 ## Acknowledgements
 
