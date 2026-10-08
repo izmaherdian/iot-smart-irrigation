@@ -8,6 +8,12 @@ I built this as the reference system for the practicum of **BE4001 Instrumentati
 
 ## Architecture
 
+![System architecture](docs/images/architecture.png)
+
+*Each group's device publishes over Wi-Fi to the MQTT broker; a Node-RED flow on the server records the data in InfluxDB; each laptop monitors and controls its device over MQTT and adds manual entries (plant height, system info) to the database. Labels are in Indonesian, as used in the course.*
+
+The same structure as a data-flow diagram:
+
 ```mermaid
 flowchart LR
   subgraph Device["Device (one per group)"]
@@ -55,6 +61,18 @@ The device publishes; the server-side logger subscribes with a wildcard and writ
 
 Board: ESP32 DevKit, 30 pins, selected as *ESP32 Dev Module* in Arduino IDE.
 
+Sensor connections:
+
+![Sensor wiring](docs/images/wiring-sensors.png)
+
+Complete layout on two joined 400-point breadboards, with the pump driver and its 5 V supply:
+
+![Breadboard layout](docs/images/wiring-breadboard.png)
+
+Serial output of the running device (sensor line every second, an incoming ping command and its reply):
+
+![Serial monitor](docs/images/serial-monitor.png)
+
 ## MQTT interface
 
 `XX` is the two-digit device (group) number.
@@ -76,6 +94,16 @@ Board: ESP32 DevKit, 30 pins, selected as *ESP32 Dev Module* in Arduino IDE.
 | `kel_XX_data` | `SM`, `AM`, `AT`, and `Height` (plant height in mm, entered daily) | server logger; `Height` from the manual-entry flow |
 | `kel_XX_pompa` | `mode`, `pompa` | server logger |
 | `kel_XX_info` | location, planting and harvest dates, daylight hours, plant type, members | manual-entry flow |
+
+The logger flow on the server subscribes to all groups with a wildcard and names the measurement after the group number in the topic:
+
+![Server logger flow](docs/images/server-logger-flow.png)
+
+Logged data in the InfluxDB Data Explorer, and the two buckets:
+
+![InfluxDB Data Explorer](docs/images/influxdb-explorer.png)
+
+![InfluxDB buckets](docs/images/influxdb-buckets.png)
 
 All points carry the tag `kelompok` (group number). Two buckets are used: `BE4001` (90-day retention) for the project and `BE4001_D` (7-day retention) for experiments.
 
@@ -124,11 +152,23 @@ In a local Node-RED, install `node-red-dashboard`, `node-red-contrib-influxdb` a
 
 ![Dashboard flow](docs/images/dashboard-flow.png)
 
+Pump switch and device replies on the dashboard (here the answer to a ping):
+
+![Dashboard with pump control](docs/images/dashboard-control.png)
+
+`node-red/manual_entry_flow.json` sends the system info once and the plant height daily:
+
+![Manual entry flow](docs/images/manual-entry-flow.png)
+
 ## Known limitations
 
 - `dashboard_flow.json` comes from the third lab session, whose firmware sends pump state as a fourth value on the `DATA` topic. With the final firmware in this repository, pump state arrives on the `PUMP` topic instead, so the dashboard's pump gauge needs to be rewired to that topic.
 - The broker uses a shared username and password without TLS, which is acceptable for a classroom but not for a public deployment.
 - The pump is driven on/off only; there is no flow measurement or PWM control.
+
+## Image credits
+
+The wiring and architecture drawings are my own, but they embed product photos and icons that belong to their respective owners: the ESP32 DevKit, capacitive soil moisture sensor, L298N driver, pump and adaptor photos come from vendor listings and earlier course slides, and the DHT11 top-view photo is by Edwiyanto (Wikimedia Commons, CC BY-SA 4.0). All screenshots were taken from my own running system.
 
 ## Acknowledgements
 
