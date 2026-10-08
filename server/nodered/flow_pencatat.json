@@ -1,0 +1,152 @@
+[
+ {
+  "id": "pencatat",
+  "type": "tab",
+  "label": "Pencatat Tugas Besar",
+  "disabled": false,
+  "info": "Mencatat data semua kelompok dari MQTT ke InfluxDB (bucket BE4001)."
+ },
+ {
+  "id": "br",
+  "type": "mqtt-broker",
+  "name": "Broker praktikum",
+  "broker": "mosquitto",
+  "port": "1883",
+  "clientid": "pencatat-tubes",
+  "autoConnect": true,
+  "usetls": false,
+  "protocolVersion": "4",
+  "keepalive": "60",
+  "cleansession": true,
+  "autoUnsubscribe": true,
+  "birthTopic": "",
+  "birthQos": "0",
+  "birthPayload": "",
+  "birthMsg": {},
+  "closeTopic": "",
+  "closeQos": "0",
+  "closePayload": "",
+  "closeMsg": {},
+  "willTopic": "",
+  "willQos": "0",
+  "willPayload": "",
+  "willMsg": {},
+  "userProps": "",
+  "sessionExpiry": ""
+ },
+ {
+  "id": "ifx",
+  "type": "influxdb",
+  "hostname": "127.0.0.1",
+  "port": "8086",
+  "protocol": "http",
+  "database": "database",
+  "name": "InfluxDB praktikum",
+  "usetls": false,
+  "tls": "",
+  "influxdbVersion": "2.0",
+  "url": "http://influxdb:8086",
+  "timeout": "10",
+  "rejectUnauthorized": true
+ },
+ {
+  "id": "m1",
+  "type": "mqtt in",
+  "z": "pencatat",
+  "name": "",
+  "topic": "BE4001/+/DATA",
+  "qos": "0",
+  "datatype": "utf8",
+  "broker": "br",
+  "nl": false,
+  "rap": true,
+  "rh": 0,
+  "inputs": 0,
+  "x": 150,
+  "y": 100,
+  "wires": [
+   [
+    "f1"
+   ]
+  ]
+ },
+ {
+  "id": "f1",
+  "type": "function",
+  "z": "pencatat",
+  "name": "data sensor",
+  "func": "// topik: BE4001/XX/DATA, isi: \"SM,AM,AT\"\nconst kel = msg.topic.split('/')[1];\nconst nilai = String(msg.payload).split(',').map(Number);\nif (!/^\\d{2}$/.test(kel) || nilai.length < 3 || nilai.slice(0, 3).some(isNaN)) {\n    node.warn('data diabaikan: ' + msg.topic + ' = ' + msg.payload);\n    return null;\n}\nmsg.measurement = 'kel_' + kel + '_data';\nmsg.payload = [{ SM: nilai[0], AM: nilai[1], AT: nilai[2] }, { kelompok: kel }];\nreturn msg;",
+  "outputs": 1,
+  "timeout": 0,
+  "noerr": 0,
+  "initialize": "",
+  "finalize": "",
+  "libs": [],
+  "x": 400,
+  "y": 100,
+  "wires": [
+   [
+    "io"
+   ]
+  ]
+ },
+ {
+  "id": "m2",
+  "type": "mqtt in",
+  "z": "pencatat",
+  "name": "",
+  "topic": "BE4001/+/PUMP",
+  "qos": "0",
+  "datatype": "utf8",
+  "broker": "br",
+  "nl": false,
+  "rap": true,
+  "rh": 0,
+  "inputs": 0,
+  "x": 150,
+  "y": 180,
+  "wires": [
+   [
+    "f2"
+   ]
+  ]
+ },
+ {
+  "id": "f2",
+  "type": "function",
+  "z": "pencatat",
+  "name": "status pompa",
+  "func": "// topik: BE4001/XX/PUMP, isi: \"mode,pompa\" (1,1 = otomatis dan pompa nyala)\nconst kel = msg.topic.split('/')[1];\nconst nilai = String(msg.payload).split(',').map(Number);\nif (!/^\\d{2}$/.test(kel) || nilai.length < 2 || nilai.slice(0, 2).some(isNaN)) {\n    node.warn('status pompa diabaikan: ' + msg.topic + ' = ' + msg.payload);\n    return null;\n}\nmsg.measurement = 'kel_' + kel + '_pompa';\nmsg.payload = [{ mode: nilai[0], pompa: nilai[1] }, { kelompok: kel }];\nreturn msg;",
+  "outputs": 1,
+  "timeout": 0,
+  "noerr": 0,
+  "initialize": "",
+  "finalize": "",
+  "libs": [],
+  "x": 400,
+  "y": 180,
+  "wires": [
+   [
+    "io"
+   ]
+  ]
+ },
+ {
+  "id": "io",
+  "type": "influxdb out",
+  "z": "pencatat",
+  "influxdb": "ifx",
+  "name": "",
+  "measurement": "",
+  "precision": "",
+  "retentionPolicy": "",
+  "database": "database",
+  "precisionV18FluxV20": "s",
+  "retentionPolicyV18Flux": "",
+  "org": "SITH ITB",
+  "bucket": "BE4001",
+  "x": 680,
+  "y": 140,
+  "wires": []
+ }
+]

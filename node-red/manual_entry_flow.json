@@ -1,0 +1,195 @@
+[
+    {
+        "id": "tubes",
+        "type": "tab",
+        "label": "Tugas Besar",
+        "disabled": false,
+        "info": "Mengirim info sistem dan tinggi tanaman ke database pusat (bucket BE4001). Ganti 00 dengan nomor kelompok."
+    },
+    {
+        "id": "ifx",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "database",
+        "name": "InfluxDB Praktikum",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://YOUR_SERVER_IP:8086",
+        "timeout": "10",
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "i1",
+        "type": "inject",
+        "z": "tubes",
+        "name": "kirim info (1 kali)",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 100,
+        "wires": [
+            [
+                "f1"
+            ]
+        ]
+    },
+    {
+        "id": "f1",
+        "type": "function",
+        "z": "tubes",
+        "name": "info sistem",
+        "func": "// Info sistem kelompok: cukup dikirim SEKALI (kirim ulang jika ada yang salah).\n// Ganti semua nilai di bawah dengan data kelompok kalian.\nmsg.payload = [{\n    loc_lat: -6.8915,          // latitude lokasi alat (derajat)\n    loc_long: 107.6107,        // longitude lokasi alat (derajat)\n    t_tanam: \"2026-11-30\",     // tanggal bibit mulai digerminasi\n    t_panen: \"2026-12-12\",     // tanggal panen\n    daytime: 6,                // jam sinar matahari efektif per hari\n    tanaman: \"microgreens kangkung\"\n}, {\n    kelompok: \"00\"             // nomor kelompok\n}];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 100,
+        "wires": [
+            [
+                "o1"
+            ]
+        ]
+    },
+    {
+        "id": "i2",
+        "type": "inject",
+        "z": "tubes",
+        "name": "kirim NIM (tiap anggota)",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 160,
+        "wires": [
+            [
+                "f2"
+            ]
+        ]
+    },
+    {
+        "id": "f2",
+        "type": "function",
+        "z": "tubes",
+        "name": "anggota",
+        "func": "// NIM anggota: ubah NIM, Deploy, lalu inject. Ulangi untuk tiap anggota.\nmsg.payload = [{\n    anggota: \"11223000\"\n}, {\n    kelompok: \"00\"\n}];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 160,
+        "wires": [
+            [
+                "o1"
+            ]
+        ]
+    },
+    {
+        "id": "o1",
+        "type": "influxdb out",
+        "z": "tubes",
+        "influxdb": "ifx",
+        "name": "",
+        "measurement": "kel_00_info",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "s",
+        "retentionPolicyV18Flux": "",
+        "org": "SITH ITB",
+        "bucket": "BE4001",
+        "x": 680,
+        "y": 130,
+        "wires": []
+    },
+    {
+        "id": "i3",
+        "type": "inject",
+        "z": "tubes",
+        "name": "kirim tinggi (tiap hari)",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 260,
+        "wires": [
+            [
+                "f3"
+            ]
+        ]
+    },
+    {
+        "id": "f3",
+        "type": "function",
+        "z": "tubes",
+        "name": "tinggi tanaman",
+        "func": "// Tinggi rata-rata tanaman hari ini (milimeter): ubah angkanya, Deploy, lalu inject.\n// Dikirim SEKALI SEHARI.\nmsg.payload = [{\n    Height: 12\n}, {\n    kelompok: \"00\"\n}];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 260,
+        "wires": [
+            [
+                "o2"
+            ]
+        ]
+    },
+    {
+        "id": "o2",
+        "type": "influxdb out",
+        "z": "tubes",
+        "influxdb": "ifx",
+        "name": "",
+        "measurement": "kel_00_data",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "s",
+        "retentionPolicyV18Flux": "",
+        "org": "SITH ITB",
+        "bucket": "BE4001",
+        "x": 680,
+        "y": 260,
+        "wires": []
+    }
+]

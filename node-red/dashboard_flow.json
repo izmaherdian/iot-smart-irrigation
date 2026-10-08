@@ -1,0 +1,1510 @@
+[
+    {
+        "id": "97d9ac7ebd8b35ab",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "ef71a1af4d190dd3",
+        "type": "group",
+        "z": "97d9ac7ebd8b35ab",
+        "name": "MQTT Gauge",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "66e3054c3faaa086",
+            "25987faefdb0a19b",
+            "46d7605d673d7f9c",
+            "d2420e5f796118df",
+            "67279725392054ea",
+            "2060ef5461a0b8de",
+            "d611940a996b10e7",
+            "f990f001f2856426",
+            "8095f6b22b2f884d",
+            "908bacc19f7d3f5a",
+            "e35b2f7c92848d1f"
+        ],
+        "x": 354,
+        "y": 419,
+        "w": 772,
+        "h": 202
+    },
+    {
+        "id": "3dd867e5a82423a0",
+        "type": "group",
+        "z": "97d9ac7ebd8b35ab",
+        "name": "Pump Control",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "ed6be004bd187d21",
+            "860ffe8171333f77",
+            "f9e0a63f86a5a34d",
+            "7de1bc05df760efc",
+            "348dd6b0880ac862"
+        ],
+        "x": 354,
+        "y": 739,
+        "w": 632,
+        "h": 202
+    },
+    {
+        "id": "9a20be6c0d33e6ca",
+        "type": "group",
+        "z": "97d9ac7ebd8b35ab",
+        "name": "Real Time Monitor Database",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "aa61ac3a53a1c757",
+            "b388a90ec289dad8",
+            "d790f195c13b8d20",
+            "b050a75bed9fa594"
+        ],
+        "x": 354,
+        "y": 1459,
+        "w": 1012,
+        "h": 82
+    },
+    {
+        "id": "4fbcfc570e4482be",
+        "type": "group",
+        "z": "97d9ac7ebd8b35ab",
+        "name": "Ajax",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "3014540f3537ad3b",
+            "5d01e95cb49cebf7"
+        ],
+        "x": 354,
+        "y": 639,
+        "w": 672,
+        "h": 82
+    },
+    {
+        "id": "186fe31d873aa083",
+        "type": "group",
+        "z": "97d9ac7ebd8b35ab",
+        "name": "Database on demmand",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "7ea8dd7ac683bb20",
+            "f6dd3b7f267edb80",
+            "b4004473ece947ff",
+            "0ac7072d978a6656",
+            "1673db2acd53c3e7",
+            "23fed7d28472801d",
+            "b6ff8a1e3329677e",
+            "88923e71fbc5d292",
+            "7fb246fb72c10aa9",
+            "22102a52833aaa09"
+        ],
+        "x": 354,
+        "y": 1159,
+        "w": 1012,
+        "h": 282
+    },
+    {
+        "id": "a37a6877ec5d1b82",
+        "type": "group",
+        "z": "97d9ac7ebd8b35ab",
+        "name": "MQTT data to Database",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "529844ebd2e65da3",
+            "e7d3bbe2d1be2ea7",
+            "d726b73cb43fc5bd",
+            "625ad79eec4940c8",
+            "11d77ca16e5a7283",
+            "6c650c6bb1a957d9",
+            "da6fdcccfa985de8"
+        ],
+        "x": 354,
+        "y": 959,
+        "w": 872,
+        "h": 182
+    },
+    {
+        "id": "b30c62104ac30a91",
+        "type": "serial in",
+        "z": "97d9ac7ebd8b35ab",
+        "d": true,
+        "name": "",
+        "serial": "c7d45c9f109eab1e",
+        "x": 470,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3ef9bb54d0dbdc72",
+        "type": "file",
+        "z": "97d9ac7ebd8b35ab",
+        "name": "",
+        "filename": "C:\\DataPraktikum\\data.csv",
+        "appendNewline": false,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 780,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e91433a921b5c557",
+        "type": "inject",
+        "z": "97d9ac7ebd8b35ab",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Waktu,Kelembaban Tanah,Kelembaban Udara,Temperatur Udara",
+        "payloadType": "str",
+        "x": 470,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "efb9a718f04bb311",
+        "type": "file",
+        "z": "97d9ac7ebd8b35ab",
+        "name": "Delete File",
+        "filename": "C:\\DataPraktikum\\data.csv",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 830,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "66e3054c3faaa086",
+        "type": "ui_gauge",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "ef71a1af4d190dd3",
+        "name": "",
+        "group": "d13719bcdb8ba704",
+        "order": 9,
+        "width": 3,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Temperatur",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 990,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "25987faefdb0a19b",
+        "type": "ui_gauge",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "ef71a1af4d190dd3",
+        "name": "",
+        "group": "d13719bcdb8ba704",
+        "order": 11,
+        "width": 3,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Humiditas Udara",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 1010,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "46d7605d673d7f9c",
+        "type": "ui_gauge",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "ef71a1af4d190dd3",
+        "name": "",
+        "group": "d13719bcdb8ba704",
+        "order": 10,
+        "width": 3,
+        "height": 3,
+        "gtype": "gage",
+        "title": " Humiditas Tanah",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 1010,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "d2420e5f796118df",
+        "type": "csv",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "ef71a1af4d190dd3",
+        "name": "",
+        "sep": ",",
+        "hdrin": "",
+        "hdrout": "none",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 630,
+        "y": 500,
+        "wires": [
+            [
+                "67279725392054ea",
+                "2060ef5461a0b8de",
+                "d611940a996b10e7",
+                "908bacc19f7d3f5a"
+            ]
+        ]
+    },
+    {
+        "id": "67279725392054ea",
+        "type": "change",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "ef71a1af4d190dd3",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "temperatur udara",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.col3",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 800,
+        "y": 460,
+        "wires": [
+            [
+                "66e3054c3faaa086",
+                "ff2472058c96d116"
+            ]
+        ]
+    },
+    {
+        "id": "2060ef5461a0b8de",
+        "type": "change",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "ef71a1af4d190dd3",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "kelembaban udara",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.col2",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 800,
+        "y": 500,
+        "wires": [
+            [
+                "25987faefdb0a19b"
+            ]
+        ]
+    },
+    {
+        "id": "d611940a996b10e7",
+        "type": "change",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "ef71a1af4d190dd3",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "kelembaban tanah",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.col1",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 800,
+        "y": 540,
+        "wires": [
+            [
+                "46d7605d673d7f9c"
+            ]
+        ]
+    },
+    {
+        "id": "f990f001f2856426",
+        "type": "inject",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "ef71a1af4d190dd3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "50,70,27",
+        "payloadType": "str",
+        "x": 460,
+        "y": 500,
+        "wires": [
+            [
+                "d2420e5f796118df"
+            ]
+        ]
+    },
+    {
+        "id": "8095f6b22b2f884d",
+        "type": "mqtt in",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "ef71a1af4d190dd3",
+        "name": "",
+        "topic": "BE4001/00/DATA",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "2e2d5c855ee739c2",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 510,
+        "y": 540,
+        "wires": [
+            [
+                "d2420e5f796118df"
+            ]
+        ]
+    },
+    {
+        "id": "3014540f3537ad3b",
+        "type": "mqtt in",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "4fbcfc570e4482be",
+        "name": "",
+        "topic": "BE4001/00/AJAX",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "2e2d5c855ee739c2",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 510,
+        "y": 680,
+        "wires": [
+            [
+                "5d01e95cb49cebf7"
+            ]
+        ]
+    },
+    {
+        "id": "5d01e95cb49cebf7",
+        "type": "ui_text",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "4fbcfc570e4482be",
+        "group": "d13719bcdb8ba704",
+        "order": 13,
+        "width": 9,
+        "height": 1,
+        "name": "",
+        "label": "ajax",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 950,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "ed6be004bd187d21",
+        "type": "mqtt out",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "3dd867e5a82423a0",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "2e2d5c855ee739c2",
+        "x": 910,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "860ffe8171333f77",
+        "type": "inject",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "3dd867e5a82423a0",
+        "name": "",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "BE4001/00/CMD/PUMP",
+        "payload": "1",
+        "payloadType": "str",
+        "x": 560,
+        "y": 780,
+        "wires": [
+            [
+                "ed6be004bd187d21"
+            ]
+        ]
+    },
+    {
+        "id": "f9e0a63f86a5a34d",
+        "type": "inject",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "3dd867e5a82423a0",
+        "name": "",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "BE4001/00/CMD/PUMP",
+        "payload": "0",
+        "payloadType": "str",
+        "x": 560,
+        "y": 820,
+        "wires": [
+            [
+                "ed6be004bd187d21"
+            ]
+        ]
+    },
+    {
+        "id": "908bacc19f7d3f5a",
+        "type": "change",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "ef71a1af4d190dd3",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "status pompa",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.col4",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 800,
+        "y": 580,
+        "wires": [
+            [
+                "e35b2f7c92848d1f"
+            ]
+        ]
+    },
+    {
+        "id": "e35b2f7c92848d1f",
+        "type": "ui_gauge",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "ef71a1af4d190dd3",
+        "name": "",
+        "group": "d13719bcdb8ba704",
+        "order": 12,
+        "width": 3,
+        "height": 2,
+        "gtype": "gage",
+        "title": "Pompa",
+        "label": "on/off",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "1",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 980,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "7de1bc05df760efc",
+        "type": "ui_switch",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "3dd867e5a82423a0",
+        "name": "",
+        "label": "switch pompa",
+        "tooltip": "",
+        "group": "d13719bcdb8ba704",
+        "order": 15,
+        "width": 3,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "BE4001/00/CMD/PUMP",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "1",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "0",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 640,
+        "y": 860,
+        "wires": [
+            [
+                "ed6be004bd187d21"
+            ]
+        ]
+    },
+    {
+        "id": "348dd6b0880ac862",
+        "type": "inject",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "3dd867e5a82423a0",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "BE4001/00/CMD/PING",
+        "payload": "0",
+        "payloadType": "str",
+        "x": 560,
+        "y": 900,
+        "wires": [
+            [
+                "ed6be004bd187d21"
+            ]
+        ]
+    },
+    {
+        "id": "3918153c0ae1d5d7",
+        "type": "function",
+        "z": "97d9ac7ebd8b35ab",
+        "name": "format chart field",
+        "func": "// helper\n// used to get all distinct values from an array\nconst distinct = (value, index, self) => {\n    return self.indexOf(value) === index;\n}\n\n\n// main code\n\n// first, get all fields of the query result\nconst fields = msg.payload.map(x => x._field);\n// get all distinct fields\nconst distinctfields = fields.filter(distinct);\n\n// get all timestamps\nconst timestamps = msg.payload.map(x => Date.parse(x._time));\n// get all values\nconst values = msg.payload.map(x => x._value);\n\n\n// loop over all distinct fields\nvar ind;\nvar data = [];\nvar arr = []\nfor (var n = 0; n < distinctfields.length; n++) { \n    // get indices of matching entries for current field\n    ind = [];\n    for (var m = 0; m < fields.length; m++) {\n        if (fields[m] === distinctfields[n]) {\n            ind.push(m);\n        }\n    }\n\n    // get matching timestamps\n    var matchingtimestamps = ind.map(x => timestamps[x])\n    // get matching values\n    var matchingvalues = ind.map(x => values[x])\n\n    // compose array\n    arr = [];\n    for (m = 0; m < matchingtimestamps.length; m++) { \n        arr.push({'x': matchingtimestamps[m], 'y': matchingvalues[m]});\n    }\n    \n    // save array\n    data.push(arr);\n}\n\nconst payload = [{\"series\": distinctfields, \"data\": data, \"labels\": distinctfields}];\n\nmsg.payload = payload;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1150,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8a38e242fd601722",
+        "type": "change",
+        "z": "97d9ac7ebd8b35ab",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "payload[0]._field",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload[0]._value",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "timestamp",
+                "pt": "msg",
+                "to": "payload[0]._time",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1140,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "529844ebd2e65da3",
+        "type": "influxdb out",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "a37a6877ec5d1b82",
+        "influxdb": "2836a28a520d7578",
+        "name": "",
+        "measurement": "kel_00_data",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "SITH ITB",
+        "bucket": "BE4001_D",
+        "x": 1050,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "e7d3bbe2d1be2ea7",
+        "type": "inject",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "a37a6877ec5d1b82",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 460,
+        "y": 1000,
+        "wires": [
+            [
+                "d726b73cb43fc5bd"
+            ]
+        ]
+    },
+    {
+        "id": "d726b73cb43fc5bd",
+        "type": "function",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "a37a6877ec5d1b82",
+        "name": "",
+        "func": "msg.payload=[\n    {\n        SM: 70,\n        AM: 50,\n        AT: 26\n    },\n    {\n        kelompok:\"00\"\n    }\n];\n\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 1000,
+        "wires": [
+            [
+                "625ad79eec4940c8"
+            ]
+        ]
+    },
+    {
+        "id": "625ad79eec4940c8",
+        "type": "change",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "a37a6877ec5d1b82",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "temp[0].SM",
+                "pt": "msg",
+                "to": "payload.col1",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "temp[0].AM",
+                "pt": "msg",
+                "to": "payload.col2",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "temp[0].AT",
+                "pt": "msg",
+                "to": "payload.col3",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "temp[1].kelompok",
+                "pt": "msg",
+                "to": "00",
+                "tot": "str"
+            },
+            {
+                "t": "delete",
+                "p": "payload",
+                "pt": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "temp",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 780,
+        "y": 1100,
+        "wires": [
+            [
+                "529844ebd2e65da3"
+            ]
+        ]
+    },
+    {
+        "id": "11d77ca16e5a7283",
+        "type": "csv",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "a37a6877ec5d1b82",
+        "name": "",
+        "sep": ",",
+        "hdrin": "",
+        "hdrout": "none",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 610,
+        "y": 1100,
+        "wires": [
+            [
+                "625ad79eec4940c8"
+            ]
+        ]
+    },
+    {
+        "id": "6c650c6bb1a957d9",
+        "type": "mqtt in",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "a37a6877ec5d1b82",
+        "name": "",
+        "topic": "BE4001/00/DATA",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "2e2d5c855ee739c2",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 510,
+        "y": 1040,
+        "wires": [
+            [
+                "11d77ca16e5a7283"
+            ]
+        ]
+    },
+    {
+        "id": "da6fdcccfa985de8",
+        "type": "inject",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "a37a6877ec5d1b82",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "60,60,30,1",
+        "payloadType": "str",
+        "x": 460,
+        "y": 1100,
+        "wires": [
+            [
+                "11d77ca16e5a7283"
+            ]
+        ]
+    },
+    {
+        "id": "7ea8dd7ac683bb20",
+        "type": "influxdb in",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "186fe31d873aa083",
+        "influxdb": "2836a28a520d7578",
+        "name": "",
+        "query": "",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "org": "SITH ITB",
+        "x": 720,
+        "y": 1260,
+        "wires": [
+            [
+                "b4004473ece947ff"
+            ]
+        ]
+    },
+    {
+        "id": "f6dd3b7f267edb80",
+        "type": "ui_chart",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "186fe31d873aa083",
+        "name": "",
+        "group": "d13719bcdb8ba704",
+        "order": 2,
+        "width": 9,
+        "height": 6,
+        "label": "Data on Demmand",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1250,
+        "y": 1260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b4004473ece947ff",
+        "type": "function",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "186fe31d873aa083",
+        "name": "format chart kelompok-field",
+        "func": "// helper\n// used to get all distinct values from an array\nconst distinct = (value, index, self) => {\n    return self.indexOf(value) === index;\n}\n\n\n// main code\n\n//get distinct kelompok\n// first, get all fields of the query result\nconst kelompok = msg.payload.map(x => x.kelompok);\n// get all distinct kelompok\nconst distinctkelompok = kelompok.filter(distinct);\n\n\n// first, get all fields of the query result\nconst fields = msg.payload.map(x => x._field);\n// get all distinct fields\nconst distinctfields = fields.filter(distinct);\n\n// get all timestamps\nconst timestamps = msg.payload.map(x => Date.parse(x._time));\n// get all values\nconst values = msg.payload.map(x => x._value);\n\n\n// loop over all distinct fields\nvar ind;\nvar series = [];\nvar data = [];\nvar arr = [];\nfor (var j = 0; j < distinctkelompok.length; j++) { \n    for (var n = 0; n < distinctfields.length; n++) { \n        // get indices of matching entries for current field\n        ind = [];\n        for (var m = 0; m < fields.length; m++) {\n            if (kelompok[m] === distinctkelompok[j]){\n                if (fields[m] === distinctfields[n]) {\n                    ind.push(m);\n                }\n            }\n        }\n    \n        // get matching timestamps\n        var matchingtimestamps = ind.map(x => timestamps[x])\n        // get matching values\n        var matchingvalues = ind.map(x => values[x])\n    \n        // compose array\n        arr = [];\n        for (m = 0; m < matchingtimestamps.length; m++) { \n            arr.push({'x': matchingtimestamps[m], 'y': matchingvalues[m]});\n        }\n        \n        // save \n        if(arr.length != 0){\n            series.push(distinctkelompok[j]+\"-\"+distinctfields[n]);\n            data.push(arr);\n        }\n    }\n}\n\nconst payload = [{\"series\": series, \"data\": data, \"labels\": distinctfields}];\n\nmsg.payload = payload;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1020,
+        "y": 1260,
+        "wires": [
+            [
+                "f6dd3b7f267edb80"
+            ]
+        ]
+    },
+    {
+        "id": "0ac7072d978a6656",
+        "type": "ui_button",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "186fe31d873aa083",
+        "name": "",
+        "group": "d13719bcdb8ba704",
+        "order": 3,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "1 Week",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "from(bucket: \"BE4001_D\")      |> range(start: -7d)         |> filter(fn: (r) => r[\"_measurement\"] == \"kel_00_data\")   |> aggregateWindow(every: 6h, fn: mean, createEmpty: false)   |> yield(name: \"mean\")",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 440,
+        "y": 1200,
+        "wires": [
+            [
+                "1673db2acd53c3e7"
+            ]
+        ]
+    },
+    {
+        "id": "1673db2acd53c3e7",
+        "type": "change",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "186fe31d873aa083",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "query",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 1300,
+        "wires": [
+            [
+                "7ea8dd7ac683bb20"
+            ]
+        ]
+    },
+    {
+        "id": "23fed7d28472801d",
+        "type": "ui_button",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "186fe31d873aa083",
+        "name": "",
+        "group": "d13719bcdb8ba704",
+        "order": 4,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "3 Days",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "from(bucket: \"BE4001_D\")      |> range(start: -3d)         |> filter(fn: (r) => r[\"_measurement\"] == \"kel_00_data\")   |> aggregateWindow(every: 1h, fn: mean, createEmpty: false)   |> yield(name: \"mean\")",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 440,
+        "y": 1240,
+        "wires": [
+            [
+                "1673db2acd53c3e7"
+            ]
+        ]
+    },
+    {
+        "id": "b6ff8a1e3329677e",
+        "type": "ui_button",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "186fe31d873aa083",
+        "name": "",
+        "group": "d13719bcdb8ba704",
+        "order": 5,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "1 Day",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "from(bucket: \"BE4001_D\")      |> range(start: -1d)         |> filter(fn: (r) => r[\"_measurement\"] == \"kel_00_data\")   |> aggregateWindow(every: 1h, fn: mean, createEmpty: false)   |> yield(name: \"mean\")",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 430,
+        "y": 1280,
+        "wires": [
+            [
+                "1673db2acd53c3e7"
+            ]
+        ]
+    },
+    {
+        "id": "88923e71fbc5d292",
+        "type": "ui_button",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "186fe31d873aa083",
+        "name": "",
+        "group": "d13719bcdb8ba704",
+        "order": 6,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "6 hours",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "from(bucket: \"BE4001_D\")      |> range(start: -6h)         |> filter(fn: (r) => r[\"_measurement\"] == \"kel_00_data\")   |> aggregateWindow(every: 10m, fn: mean, createEmpty: false)   |> yield(name: \"mean\")",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 440,
+        "y": 1320,
+        "wires": [
+            [
+                "1673db2acd53c3e7"
+            ]
+        ]
+    },
+    {
+        "id": "7fb246fb72c10aa9",
+        "type": "ui_button",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "186fe31d873aa083",
+        "name": "",
+        "group": "d13719bcdb8ba704",
+        "order": 7,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "1 hour",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "from(bucket: \"BE4001_D\")      |> range(start: -1h)         |> filter(fn: (r) => r[\"_measurement\"] == \"kel_00_data\")   |> aggregateWindow(every: 1m, fn: mean, createEmpty: false)   |> yield(name: \"mean\")",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 430,
+        "y": 1360,
+        "wires": [
+            [
+                "1673db2acd53c3e7"
+            ]
+        ]
+    },
+    {
+        "id": "22102a52833aaa09",
+        "type": "ui_button",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "186fe31d873aa083",
+        "name": "",
+        "group": "d13719bcdb8ba704",
+        "order": 8,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "15 Minutes",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "from(bucket: \"BE4001_D\")      |> range(start: -1h)         |> filter(fn: (r) => r[\"_measurement\"] == \"kel_00_data\")   |> aggregateWindow(every: 1s, fn: mean, createEmpty: false)   |> yield(name: \"mean\")",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 450,
+        "y": 1400,
+        "wires": [
+            [
+                "1673db2acd53c3e7"
+            ]
+        ]
+    },
+    {
+        "id": "aa61ac3a53a1c757",
+        "type": "influxdb in",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "9a20be6c0d33e6ca",
+        "influxdb": "2836a28a520d7578",
+        "name": "",
+        "query": "from(bucket: \"BE4001_D\")   \n  |> range(start: -1h)      \n  |> filter(fn: (r) => r[\"_measurement\"] == \"kel_00_data\")\n  |> aggregateWindow(every: 1m, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "org": "SITH ITB",
+        "x": 640,
+        "y": 1500,
+        "wires": [
+            [
+                "b050a75bed9fa594"
+            ]
+        ]
+    },
+    {
+        "id": "b388a90ec289dad8",
+        "type": "inject",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "9a20be6c0d33e6ca",
+        "name": "",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 450,
+        "y": 1500,
+        "wires": [
+            [
+                "aa61ac3a53a1c757"
+            ]
+        ]
+    },
+    {
+        "id": "d790f195c13b8d20",
+        "type": "ui_chart",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "9a20be6c0d33e6ca",
+        "name": "",
+        "group": "d13719bcdb8ba704",
+        "order": 1,
+        "width": 9,
+        "height": 6,
+        "label": "Real Time Monitor",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1250,
+        "y": 1500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b050a75bed9fa594",
+        "type": "function",
+        "z": "97d9ac7ebd8b35ab",
+        "g": "9a20be6c0d33e6ca",
+        "name": "format chart kelompok-field",
+        "func": "// helper\n// used to get all distinct values from an array\nconst distinct = (value, index, self) => {\n    return self.indexOf(value) === index;\n}\n\n\n// main code\n\n//get distinct kelompok\n// first, get all fields of the query result\nconst kelompok = msg.payload.map(x => x.kelompok);\n// get all distinct kelompok\nconst distinctkelompok = kelompok.filter(distinct);\n\n\n// first, get all fields of the query result\nconst fields = msg.payload.map(x => x._field);\n// get all distinct fields\nconst distinctfields = fields.filter(distinct);\n\n// get all timestamps\nconst timestamps = msg.payload.map(x => Date.parse(x._time));\n// get all values\nconst values = msg.payload.map(x => x._value);\n\n\n// loop over all distinct fields\nvar ind;\nvar series = [];\nvar data = [];\nvar arr = [];\nfor (var j = 0; j < distinctkelompok.length; j++) { \n    for (var n = 0; n < distinctfields.length; n++) { \n        // get indices of matching entries for current field\n        ind = [];\n        for (var m = 0; m < fields.length; m++) {\n            if (kelompok[m] === distinctkelompok[j]){\n                if (fields[m] === distinctfields[n]) {\n                    ind.push(m);\n                }\n            }\n        }\n    \n        // get matching timestamps\n        var matchingtimestamps = ind.map(x => timestamps[x])\n        // get matching values\n        var matchingvalues = ind.map(x => values[x])\n    \n        // compose array\n        arr = [];\n        for (m = 0; m < matchingtimestamps.length; m++) { \n            arr.push({'x': matchingtimestamps[m], 'y': matchingvalues[m]});\n        }\n        \n        // save \n        if(arr.length != 0){\n            series.push(distinctkelompok[j]+\"-\"+distinctfields[n]);\n            data.push(arr);\n        }\n    }\n}\n\nconst payload = [{\"series\": series, \"data\": data, \"labels\": distinctfields}];\n\nmsg.payload = payload;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 1500,
+        "wires": [
+            [
+                "d790f195c13b8d20"
+            ]
+        ]
+    },
+    {
+        "id": "a533d9d986a36455",
+        "type": "ui_text",
+        "z": "97d9ac7ebd8b35ab",
+        "group": "d13719bcdb8ba704",
+        "order": 14,
+        "width": 9,
+        "height": 2,
+        "name": "",
+        "label": "",
+        "format": "Kelompok 00",
+        "layout": "row-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "x": 570,
+        "y": 1600,
+        "wires": []
+    },
+    {
+        "id": "ff2472058c96d116",
+        "type": "debug",
+        "z": "97d9ac7ebd8b35ab",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1000,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "c7d45c9f109eab1e",
+        "type": "serial-port",
+        "serialport": "COM6",
+        "serialbaud": "9600",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "d13719bcdb8ba704",
+        "type": "ui_group",
+        "name": "Gauge Sensor",
+        "tab": "a8fff680987d343b",
+        "order": 1,
+        "disp": false,
+        "width": "21",
+        "collapse": false
+    },
+    {
+        "id": "2e2d5c855ee739c2",
+        "type": "mqtt-broker",
+        "name": "Server Praktikum",
+        "broker": "YOUR_SERVER_IP",
+        "port": "1884",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "2836a28a520d7578",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": 8086,
+        "protocol": "http",
+        "database": "database",
+        "name": "InfluxDB Praktikum",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://YOUR_SERVER_IP:8086",
+        "timeout": 10,
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "a8fff680987d343b",
+        "type": "ui_tab",
+        "name": "Monitor Otomasi Hayati",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "e20f7c32a7b90c8b",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-node-serialport": "2.0.3",
+            "node-red-dashboard": "3.6.6",
+            "@rcomanne/node-red-contrib-influxdb": "0.8.0"
+        }
+    }
+]

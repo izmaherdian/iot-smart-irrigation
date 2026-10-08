@@ -1,0 +1,65 @@
+# Server Praktikum BE4001 (Instrumentasi dan Pengendalian Sistem Hayati) 2026/2027
+#
+#   mosquitto : broker MQTT untuk Modul 2, Modul 3, dan Tugas Besar   -> port 1884
+#   influxdb  : database deret waktu untuk Modul 3 dan Tugas Besar    -> port 8086  (profil "influxdb")
+#   nodered   : Node-RED di server, mencatat MQTT ke InfluxDB (Tubes) -> 127.0.0.1:1880 (profil "tubes")
+#
+# Nyalakan broker saja      : docker compose up -d
+# Broker + InfluxDB         : docker compose --profile influxdb up -d
+# Semuanya (Tugas Besar)    : docker compose --profile influxdb --profile tubes up -d
+# Lihat status / log        : docker compose ps   |   docker compose logs -f mosquitto
+#
+# Port 1884 dipakai (bukan 1883) karena di server ini 1883 sudah dipakai broker proyek lain.
+name: server-praktikum
+
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2
+    restart: unless-stopped
+    ports:
+      - "${MQTT_PORT:-1884}:1883"
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
+      - mosquitto-data:/mosquitto/data
+    mem_limit: 64m
+
+  influxdb:
+    profiles: ["influxdb"]
+    image: influxdb:2.7
+    restart: unless-stopped
+    ports:
+      - "8086:8086"
+    environment:
+      DOCKER_INFLUXDB_INIT_MODE: setup
+      DOCKER_INFLUXDB_INIT_USERNAME: ${INFLUX_USER}
+      DOCKER_INFLUXDB_INIT_PASSWORD: ${INFLUX_PASSWORD}
+      DOCKER_INFLUXDB_INIT_ORG: ${INFLUX_ORG}
+      DOCKER_INFLUXDB_INIT_BUCKET: ${INFLUX_BUCKET}
+      DOCKER_INFLUXDB_INIT_RETENTION: ${INFLUX_RETENTION}
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: ${INFLUX_TOKEN}
+    volumes:
+      - influxdb-data:/var/lib/influxdb2
+      - influxdb-config:/etc/influxdb2
+    mem_limit: 300m
+
+  nodered:
+    profiles: ["tubes"]
+    image: nodered/node-red:4.1
+    restart: unless-stopped
+    ports:
+      # hanya dari server itu sendiri: editor Node-RED tidak diberi kata sandi, jadi JANGAN dibuka ke luar.
+      # Untuk membukanya dari laptop:  ssh -L 1880:127.0.0.1:1880 <server>  lalu buka http://127.0.0.1:1880
+      - "127.0.0.1:1880:1880"
+    environment:
+      TZ: Asia/Jakarta
+    volumes:
+      - nodered-data:/data
+    depends_on:
+      - mosquitto
+    mem_limit: 256m
+
+volumes:
+  mosquitto-data:
+  influxdb-data:
+  influxdb-config:
+  nodered-data:

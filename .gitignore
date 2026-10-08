@@ -1,0 +1,4 @@
+.env
+token_praktikan.txt
+server/mosquitto/config/passwd
+*.log
